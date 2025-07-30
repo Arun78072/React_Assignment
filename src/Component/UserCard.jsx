@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  AiFillDelete,
-  AiFillHeart,
-  AiOutlineHeart,
-  AiOutlineMail,
-  AiOutlinePhone,
-  AiTwotoneEdit,
-} from "react-icons/ai";
+import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
 import UserEditDialogBox from "./UserEditDialogBox";
 export default function UserCard({ data, handleDelete }) {
   const [userData, setUserData] = useState({});
