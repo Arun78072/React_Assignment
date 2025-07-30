@@ -11,39 +11,34 @@ export default function UserEditDialogBox({
 
   const handleChange = (key, value) => {
     setUserData({ ...userData, [key]: value });
-    validateForm(key,value)
+    validateForm(key, value);
   };
 
-  const validateForm = (key,value) => {
-    let errorMessage = '';
-    if (key === 'name') {
-        if(value.length < 1){
-            errorMessage = "Name is required";
-        }
-    }else if(key === 'mail'){
-        if(value.length < 1){
-            errorMessage = "Email is required";
-        }else if(!/^\S+@\S+\.\S+$/.test(value)){
-            errorMessage = "Invalid email format";
-        }
-    }else if(key === 'phone'){
-        if(value.length < 1){
-            errorMessage = "Phone is required";
-        }
-       
-    }else if(key === 'link'){
-        if(value.length < 1){
-            errorMessage = "Website Link is required";
-        }
+  const validateForm = (key, value) => {
+    let errorMessage = "";
+    if (key === "name") {
+      if (value.length < 1) {
+        errorMessage = "Name is required";
+      }
+    } else if (key === "mail") {
+      if (value.length < 1) {
+        errorMessage = "Email is required";
+      } else if (!/^\S+@\S+\.\S+$/.test(value)) {
+        errorMessage = "Invalid email format";
+      }
+    } else if (key === "phone") {
+      if (value.length < 1) {
+        errorMessage = "Phone is required";
+      }
     }
-    setErrors({...errors , [key]:errorMessage});
+    setErrors({ ...errors, [key]: errorMessage });
   };
 
-  const handleFormSubmit = ()=>{
-    if(Object.values(errors).every(value => value === '')){
-        handleSubmit(userData)
+  const handleFormSubmit = () => {
+    if (Object.values(errors).every((value) => value === "")) {
+      handleSubmit(userData);
     }
-  }
+  };
   useEffect(() => {
     setUserData(userDetail);
   }, [userDetail]);
@@ -75,7 +70,7 @@ export default function UserEditDialogBox({
             <div className="input_box">
               <input
                 type="text"
-                value={userData?.name || ''}
+                value={userData?.name || ""}
                 onChange={(e) => {
                   handleChange("name", e.target.value);
                 }}
@@ -90,7 +85,7 @@ export default function UserEditDialogBox({
             <div className="input_box">
               <input
                 type="text"
-                value={userData?.mail || ''}
+                value={userData?.mail || ""}
                 onChange={(e) => {
                   handleChange("mail", e.target.value);
                 }}
@@ -105,7 +100,7 @@ export default function UserEditDialogBox({
             <div className="input_box">
               <input
                 type="text"
-                value={userData.phone || ''}
+                value={userData.phone || ""}
                 onChange={(e) => {
                   handleChange("phone", e.target.value);
                 }}
@@ -113,25 +108,13 @@ export default function UserEditDialogBox({
               <p className="error">{errors.phone}</p>
             </div>
           </div>
-          <div>
-            <label>
-              <span>*</span> Website :{" "}
-            </label>
-            <div className="input_box">
-              <input
-                type="text"
-                value={userData.link || ''}
-                onChange={(e) => {
-                  handleChange("link", e.target.value);
-                }}
-              />
-              <p className="error">{errors.link}</p>
-            </div>
-          </div>
         </div>
         <div className="bottom_bar">
-          <button onClick={()=>handleClose()}>Cancle</button>
-          <button onClick={()=>{handleFormSubmit()}}
+          <button onClick={() => handleClose()}>Cancle</button>
+          <button
+            onClick={() => {
+              handleFormSubmit();
+            }}
             style={{
               backgroundColor: "#1890ff",
               borderColor: "#1890ff",
